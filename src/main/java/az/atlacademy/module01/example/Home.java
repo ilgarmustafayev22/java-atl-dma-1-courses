@@ -1,4 +1,4 @@
-package atlacademy.example;
+package az.atlacademy.module01.example;
 
 import java.util.Objects;
 

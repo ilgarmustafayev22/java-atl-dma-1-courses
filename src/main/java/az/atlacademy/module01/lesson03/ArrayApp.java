@@ -12,11 +12,11 @@ public class ArrayApp {
 
         int[] nums = new int[size];
 
-        for (int i = 0; i <size; i++) {
+        for (int i = 0; i < size; i++) {
             nums[i] = sc.nextInt();
         }
 
-        for (int num : nums){
+        for (int num : nums) {
             System.out.print(num + " ");
         }
 
@@ -26,20 +26,25 @@ public class ArrayApp {
 
         int max = nums[0];
         int min = nums[0];
+        int sum = nums[0];
+        int prod = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
+            sum += nums[i];
+            prod *= nums[i];
             if (max < nums[i]) {
                 max = nums[i];
             }
 
-            if (min>nums[i]){
-                min=nums[i];
+            if (min > nums[i]) {
+                min = nums[i];
             }
         }
 
+        System.out.println(prod);
+        System.out.println(sum);
         System.out.println(max);
         System.out.println(min);
-
 
 
     }

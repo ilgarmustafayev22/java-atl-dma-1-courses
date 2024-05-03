@@ -1,6 +1,6 @@
 package az.atlacademy.module01.example02;
 
-public class Teacher extends Person{
+public class Teacher extends Person {
 
     private String jobTitle;
 

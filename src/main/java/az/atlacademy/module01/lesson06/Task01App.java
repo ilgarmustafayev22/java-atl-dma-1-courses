@@ -1,2 +1,4 @@
-package az.atlacademy.module01.lesson06;public class Task01 {
+package az.atlacademy.module01.lesson06;
+
+public class Task01App {
 }

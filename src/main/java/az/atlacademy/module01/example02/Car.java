@@ -1,11 +1,12 @@
 package az.atlacademy.module01.example02;
 
 public class Car {
+    public static int counter = 1;
 
-    static {
-        System.out.println("Carrr");
+    public void foo() {
+        System.out.println(counter);
     }
-    public static int counter;
+
     private String color;
     private String engine;
 
@@ -20,7 +21,6 @@ public class Car {
         this.engine = engine;
         this.wheel = wheel;
     }
-
 
 
     public String getColor() {
@@ -46,4 +46,15 @@ public class Car {
     public void setWheel(int wheel) {
         this.wheel = wheel;
     }
+
+
+    @Override
+    public String toString() {
+        return "Car{color='%s', engine='%s', wheel=%d}".formatted(color, engine, wheel);
+    }
+
+    static {
+        System.out.println("Carrr");
+    }
+
 }

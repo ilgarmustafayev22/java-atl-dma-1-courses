@@ -1,4 +1,6 @@
-package az.atlacademy.module01.example02;
+package az.atlacademy.module01.lesson30;
+
+import java.util.Objects;
 
 public class Person {
 
@@ -41,4 +43,16 @@ public class Person {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Person person = (Person) object;
+        return Objects.equals(name, person.name) && Objects.equals(surname, person.surname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname);
+    }
 }

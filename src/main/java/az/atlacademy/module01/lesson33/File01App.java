@@ -8,13 +8,13 @@ public class File01App {
     public static void main(String[] args) {
         Person person = new Person("John", "Doe", 43);
 
-       try (FileOutputStream fos = new FileOutputStream(RESOURCE + "person.ser");
-            BufferedOutputStream bos = new BufferedOutputStream(fos);
-            ObjectOutputStream oos = new ObjectOutputStream(bos)) {
-           oos.writeObject(person);
-       } catch (IOException e) {
-           e.getMessage();
-       }
+        try (FileOutputStream fos = new FileOutputStream(RESOURCE + "person.ser");
+             BufferedOutputStream bos = new BufferedOutputStream(fos);
+             ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+            oos.writeObject(person);
+        } catch (IOException e) {
+            e.getMessage();
+        }
 
         try (FileInputStream fis = new FileInputStream(RESOURCE + "person.ser");
              BufferedInputStream bis = new BufferedInputStream(fis);
@@ -26,7 +26,6 @@ public class File01App {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
 
     }
 

@@ -14,7 +14,6 @@ public class HashMap02App {
             hashMap.merge(c, 1, Integer::sum);
         }
         System.out.println(hashMap);
-
     }
 
 }

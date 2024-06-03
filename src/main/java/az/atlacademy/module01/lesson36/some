@@ -1,0 +1,12 @@
+create table students
+(
+    id        serial primary key,
+    name      varchar(20),
+    surname   varchar(50),
+    age       integer,
+    is_online boolean
+);
+
+
+select surname as last_name
+from students ;

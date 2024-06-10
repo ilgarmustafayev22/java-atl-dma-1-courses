@@ -2,10 +2,10 @@ package az.atlacademy.module02;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class JdbcApp {
+    public static final String INSERT_TABLE_PRODUCT = "INSERT INTO products(name) VALUES(?);";
 
     private static final String CREATE_TABLE = "CREATE TABLE students\n" +
             "(\n" +
@@ -19,9 +19,9 @@ public class JdbcApp {
 
     private static final String SELECT_ALL_STUDENTS = "SELECT * FROM students;";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         //createTable();
-         insertStudents();
+        insertTable();
         selectStudents().forEach(System.out::println);
 
     }
@@ -47,20 +47,34 @@ public class JdbcApp {
         }
     }
 
-    private static void insertStudents() {
+
+    private static void insertTable() throws SQLException {
+        Connection conn = null;
+        Savepoint first = null;
         try {
-            final Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
+            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres",
                     "postgres",
                     "mysecretpassword");
+            conn.setAutoCommit(false);
             PreparedStatement preparedStatement = conn.prepareStatement(INSERT_INTO);
-            preparedStatement.setString(1, "Gunel");
-            preparedStatement.setString(2, "Hasanova");
+            preparedStatement.setString(1, "Araz");
+            preparedStatement.setString(2, "Hasanov");
             preparedStatement.setInt(3, 21);
+            first = conn.setSavepoint("first");
+
+            PreparedStatement preparedStatement2 = conn.prepareStatement(INSERT_TABLE_PRODUCT);
+            preparedStatement2.setString(1, "aaaaaaaaaaaaa");
+
             int affectedRows = preparedStatement.executeUpdate();
+            int affectedRows2 = preparedStatement2.executeUpdate();
             System.out.println(affectedRows);
+            System.out.println(affectedRows2);
+            conn.commit();
+
             conn.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            conn.rollback(first);
+            //e.printStackTrace();
         }
 
     }

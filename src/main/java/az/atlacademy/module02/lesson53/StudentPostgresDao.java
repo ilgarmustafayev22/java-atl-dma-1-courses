@@ -23,7 +23,11 @@ public class StudentPostgresDao implements StudentDao<Student>{
                 String studentName = resultSet.getString("name");
                 String surname = resultSet.getString("surname");
                 int age = resultSet.getInt("age");
-                Student student = new Student(id, studentName, surname, age);
+                Student student = new Student();
+                student.setId(id);
+                student.setName(studentName);
+                student.setSurname(surname);
+                student.setAge(age);
                 return Optional.of(student);
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,4 +1,4 @@
-package az.atlacademy.module02.lesson53;
+package az.atlacademy.module03.lesson55;
 
 import java.util.Objects;
 
@@ -9,11 +9,14 @@ public class Student {
     private String surname;
     private Integer age;
 
-    public Student() {
-    }
-
     public Student(Long id, String name, String surname, Integer age) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+    }
+
+    public Student(String name, String surname, Integer age) {
         this.name = name;
         this.surname = surname;
         this.age = age;

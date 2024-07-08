@@ -1,4 +1,4 @@
-package az.atlacademy.module02.lesson53;
+package az.atlacademy.module03.lesson62;
 
 import java.util.Objects;
 
@@ -9,11 +9,14 @@ public class Student {
     private String surname;
     private Integer age;
 
-    public Student() {
-    }
-
     public Student(Long id, String name, String surname, Integer age) {
         this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+    }
+
+    public Student(String name, String surname, Integer age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -55,8 +58,8 @@ public class Student {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        Student students = (Student) object;
-        return Objects.equals(id, students.id) && Objects.equals(name, students.name) && Objects.equals(surname, students.surname) && Objects.equals(age, students.age);
+        Student student = (Student) object;
+        return Objects.equals(id, student.id) && Objects.equals(name, student.name) && Objects.equals(surname, student.surname) && Objects.equals(age, student.age);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package az.atlacademy.springjdbctemplateexample.model;
 
+import az.atlacademy.springjdbctemplateexample.model.dto.ErrorDto;
 import lombok.*;
 
 import java.util.Objects;

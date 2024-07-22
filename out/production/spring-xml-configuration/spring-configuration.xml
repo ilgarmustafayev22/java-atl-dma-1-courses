@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="Bmw" class="az.atl.Bmw"/>
+
+    <bean id="Mazda" class="az.atl.Mazda"/>
+
+    <bean id="Auidi" class="az.atl.Auidi"/>
+
+    <bean id="ServiceCarImpl" class="az.atl.ServiceCarImpl">
+            <constructor-arg index="0" ref="Mazda"/>
+    </bean>
+
+    <bean id="ServiceCarImpl2" class="az.atl.ServiceCarImpl">
+            <constructor-arg index="0" ref="Bmw"/>
+    </bean>
+
+</beans>

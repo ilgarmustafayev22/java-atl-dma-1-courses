@@ -1,6 +1,6 @@
 package az.atlacademy.springbasicauthenticationexample.service.impl;
 
-import az.atlacademy.springbasicauthenticationexample.UserNotFoundException;
+import az.atlacademy.springbasicauthenticationexample.exception.UserNotFoundException;
 import az.atlacademy.springbasicauthenticationexample.dao.entity.UserEntity;
 import az.atlacademy.springbasicauthenticationexample.dao.repository.UserRepository;
 import az.atlacademy.springbasicauthenticationexample.model.enums.UserRole;

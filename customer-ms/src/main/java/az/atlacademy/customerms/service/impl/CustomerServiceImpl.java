@@ -53,7 +53,7 @@ public class CustomerServiceImpl implements CustomerService {
         CustomerEntity customerEntity = customerRepository.findById(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer not found with id: " + customerId));
 
-        customerEntity.setBalance(customerEntity.getBalance().min(price));
+        customerEntity.setBalance(customerEntity.getBalance().subtract(price));
         customerRepository.save(customerEntity);
     }
 

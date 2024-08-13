@@ -29,8 +29,8 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public void createOrder(OrderDto orderDto) {
-        customerFeign.decreaseBalance(orderDto.getCustomerId(),
-                orderDto.getPrice().multiply(BigDecimal.valueOf(orderDto.getCount())));
+        BigDecimal multiply = orderDto.getPrice().multiply(BigDecimal.valueOf(orderDto.getCount()));
+        customerFeign.decreaseBalance(orderDto.getCustomerId(), multiply);
         productFeign.decreaseCount(orderDto.getProductId(), orderDto.getCount());
         orderRepository.save(orderMapper.toEntity(orderDto));
     }

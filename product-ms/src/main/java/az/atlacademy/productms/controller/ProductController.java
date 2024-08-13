@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/products")
@@ -42,6 +44,20 @@ public class ProductController {
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{productId}")
+    public ResponseEntity<Void> decreaseCount(@PathVariable Long productId,
+                                              @RequestParam Integer count){
+        productService.decreaseCount(productId, count);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> increaseCount(@PathVariable Long id,
+                                              @RequestParam Integer count) {
+        productService.increaseCount(id, count);
+        return ResponseEntity.ok().build();
     }
 
 }

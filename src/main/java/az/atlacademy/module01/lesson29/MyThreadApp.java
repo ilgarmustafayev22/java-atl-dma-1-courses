@@ -1,11 +1,11 @@
 package az.atlacademy.module01.lesson29;
 
+import java.util.UUID;
 import java.util.concurrent.Callable;
 
 public class MyThreadApp {
 
     public static void main(String[] args) {
-
         MyThread myThread = new MyThread("2");
         int priority = myThread.getPriority();
         System.out.println(priority);

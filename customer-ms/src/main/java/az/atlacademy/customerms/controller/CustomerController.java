@@ -20,6 +20,7 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Void> createStudent(@Valid @RequestBody CustomerDto customerDto) {
         customerService.createCustomer(customerDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();

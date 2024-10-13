@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  postgres3:
+    image: postgres:latest
+    container_name: postgres3
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgres/data
+
+  api-gateway:
+    image: api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    build:
+      context: api-gateway
+      dockerfile: Dockerfile
+    network_mode: "host"
+    depends_on:
+      - postgres3
+
+  customer-ms:
+      image: customer-ms
+      container_name: customer-ms
+      ports:
+        - "8081:8081"
+      build:
+        context: customer-ms
+        dockerfile: Dockerfile
+      network_mode: "host"
+      depends_on:
+        - postgres3
+
+  order-ms:
+      image: order-ms
+      container_name: order-ms
+      ports:
+        - "8082:8082"
+      build:
+        context: order-ms
+        dockerfile: Dockerfile
+      network_mode: "host"
+      depends_on:
+        - postgres3
+
+  product-ms:
+       image: product-ms
+       container_name: product-ms
+       ports:
+         - "8083:8083"
+       build:
+         context: product-ms
+         dockerfile: Dockerfile
+       network_mode: "host"
+       depends_on:
+         - postgres3
+
+volumes:
+  db:
